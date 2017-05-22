@@ -1,14 +1,15 @@
+var stone = 0;
+var sps   = 0;
 $(function(){
   kongregateAPI.loadAPI(function(){
     window.kongregate = kongregateAPI.getAPI();
-    if(kongregate.services.isGuest()){
-      alert("ok");
-    }
   });
-  var candy = 0;
-  $(".candy_number").text(candy);
-  $(".center_candy").on("click", function(){
-    candy++;
-    $(".candy_number").text(candy);
+  $("#stone_number").text(stone);
+  $("#center_stone").on("click", function(){
+    stone++;
   });
+  setInterval(function(){
+    stone += sps / 10;
+    $("#stone_number").text(parseInt(stone));
+  }, 100);
 });

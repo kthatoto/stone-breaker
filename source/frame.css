@@ -1,3 +1,7 @@
+* {
+  font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
@@ -9,19 +13,18 @@ body {
 p {
   margin: 0;
 }
-.outer_frame {
+#outer_frame {
   width: 1000px;
   height: 600px;
   border: 1px solid #000;
-  box-sizing: border-box;
-  position: absolute;
   margin: auto;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
+  position: absolute;
 }
-.inner_frame {
+#inner_frame {
   width: 100%;
   height: 100%;
   position: relative;
