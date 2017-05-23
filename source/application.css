@@ -15,21 +15,6 @@
   border: 1px solid #000;
   background-color: #fdfdfd;
 }
-.tool {
-  display: block;
-  position: static;
-  width: 280px;
-  height: 70px;
-  border: 1px solid #000;
-  margin: 10px;
-}
-#tools_box {
-  top: 10px;
-  left: 10px;
-  width: 300px;
-  height: 400px;
-  border: 1px solid #000;
-}
 #properties_box {
   top: 10px;
   right: 10px;
