@@ -15,8 +15,10 @@ $(function(){
   }, 100);
   tools = [
     new Tool(10, "hand punch", 0.1, 1),
-    new Tool(100, "hand punch2", 1, 2)
+    new Tool(100, "hand punch2", 1, 2),
+    new Tool(250, "hand punch3", 5, 3)
   ];
+  tools[0].init();
 });
 
 Tool: {
@@ -34,10 +36,19 @@ Tool: {
     var self = this;
     $("#tool_" + this.t_id).on("click", function(){
       if(self.price <= stone){
+        if(self.count == 0) self.next_tool();
         self.buy();
         self.set_info(true);
       }
     });
+  }
+
+  p.next_tool = function(){
+    if(tools[this.t_id]) {
+      var new_tool_box = $("#tools_box > div:first-child").clone();
+      new_tool_box.attr("id", "tool_" + (this.t_id + 1)).appendTo("#tools_box");
+      tools[this.t_id].init();
+    }
   }
 
   p.set_info = function(update) {
