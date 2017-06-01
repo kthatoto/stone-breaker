@@ -33,3 +33,16 @@
 #stone_number {
   right: 10px;
 }
+
+#sps_number_box {
+  top: 45px;
+  width: 100%;
+  height: 36px;
+  font-size: 30px;
+}
+#sps_number_label {
+  left: 10px;
+}
+#sps_number {
+  right: 10px;
+}

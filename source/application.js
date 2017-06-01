@@ -1,9 +1,9 @@
 stone = 0;
 sps   = 0;
 $(function(){
-  kongregateAPI.loadAPI(function(){
-    window.kongregate = kongregateAPI.getAPI();
-  });
+  // kongregateAPI.loadAPI(function(){
+  //   window.kongregate = kongregateAPI.getAPI();
+  // });
   $("#stone_number").text(stone);
   $("#center_stone").on("click", function(){
     stone++;
@@ -12,6 +12,7 @@ $(function(){
   setInterval(function(){
     stone += sps / 10;
     $("#stone_number").text(parseInt(stone));
+    $("#sps_number").text(float_format(sps, 1));
   }, 100);
   tools = [
     new Tool(10, "hand punch", 0.1, 1),
