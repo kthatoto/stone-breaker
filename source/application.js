@@ -7,31 +7,41 @@ $(function(){
   $("#stone_number").text(stone);
   $("#center_stone").on("click", function(){
     stone++;
-    console.log(stone);
+    stone = float_format(stone, 3);
   });
   setInterval(function(){
     stone += sps / 10;
     $("#stone_number").text(parseInt(stone));
   }, 100);
-  var tool1 = new Tool(10, "hand punch", 0.1, "#tool_1");
+  tools = [
+    new Tool(10, "hand punch", 0.1, 1),
+    new Tool(100, "hand punch2", 1, 2)
+  ];
 });
 
-
 Tool: {
-  Tool = function(price, name, t_sps, tool_id) {
+  Tool = function(price, name, t_sps, t_id) {
     this.price   = price;
     this.name    = name;
     this.t_sps   = t_sps;
     this.count   = 0;
-    this.tool_id = tool_id;
-    this.set_info(false);
-    var self = this;
-    $(this.tool_id).on("click", self.buy());
+    this.t_id    = t_id;
   };
   var p = Tool.prototype;
 
+  p.init = function(){
+    this.set_info(false);
+    var self = this;
+    $("#tool_" + this.t_id).on("click", function(){
+      if(self.price <= stone){
+        self.buy();
+        self.set_info(true);
+      }
+    });
+  }
+
   p.set_info = function(update) {
-    var info = $(this.tool_id).find(".tool_info");
+    var info = $("#tool_" + this.t_id).find(".tool_info");
     if(!update){
       info.find(".tool_name").text(this.name);
     }
@@ -40,11 +50,17 @@ Tool: {
     info.find(".tool_sps_number").text(this.t_sps);
   };
   p.buy = function() {
-    console.log(this.price);
     stone -= this.price;
     sps   += this.t_sps;
     this.count++;
     this.price *= 1.15;
-    this.set_info(true);
+    stone = float_format(stone, 3);
+    this.price = parseInt(this.price);
   };
+}
+
+function float_format(number, n) {
+  var pow = Math.pow(10 , n) ;
+
+  return Math.round(number * pow) / pow;
 }
