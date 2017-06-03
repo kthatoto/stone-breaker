@@ -15,9 +15,10 @@ $(function(){
     $("#sps_number").text(float_format(sps, 1));
   }, 100);
   tools = [
-    new Tool(10, "hand punch", 0.1, 1),
-    new Tool(100, "hand punch2", 1, 2),
-    new Tool(250, "hand punch3", 5, 3)
+    new Tool(10,   "hand punch",  0.1, 1),
+    new Tool(100,  "hand punch2", 1,   2),
+    new Tool(300,  "hand punch3", 5,   3),
+    new Tool(1000, "hand punch4", 15,  4),
   ];
   tools[0].init();
 });
