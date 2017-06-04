@@ -14,6 +14,9 @@ $(function(){
     $("#stone_number").text(parseInt(stone));
     $("#sps_number").text(float_format(sps, 1));
   }, 100);
+
+  $(".tool_more_info").hide();
+
   tools = [
     new Tool(10,   "hand punch",  0.1, 1),
     new Tool(100,  "hand punch2", 1,   2),
@@ -43,11 +46,19 @@ Tool: {
         self.set_info(true);
       }
     });
+
+    $("#tool_" + this.t_id).hover(
+      function(e){
+        $(this).children(".tool_more_info").show();
+    },function(e){
+        $(this).children(".tool_more_info").hide();
+    });
   }
 
   p.next_tool = function(){
     if(tools[this.t_id]) {
       var new_tool_box = $("#tools_box > div:first-child").clone();
+      new_tool_box.children(".tool_more_info").hide();
       new_tool_box.attr("id", "tool_" + (this.t_id + 1)).appendTo("#tools_box");
       tools[this.t_id].init();
     }

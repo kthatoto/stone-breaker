@@ -66,3 +66,12 @@
 .tool_sps_number {
   right: 0;
 }
+
+.tool_more_info {
+  background-color: #f00;
+  width: 100px;
+  height: 50px;
+  display: none;
+}
+
+
