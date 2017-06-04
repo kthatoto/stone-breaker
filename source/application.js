@@ -38,6 +38,7 @@ Tool: {
 
   p.init = function(){
     this.set_info(false);
+    this.more_info();
     var self = this;
     $("#tool_" + this.t_id).on("click", function(){
       if(self.price <= stone){
@@ -45,13 +46,6 @@ Tool: {
         self.buy();
         self.set_info(true);
       }
-    });
-
-    $("#tool_" + this.t_id).hover(
-      function(e){
-        $(this).children(".tool_more_info").show();
-    },function(e){
-        $(this).children(".tool_more_info").hide();
     });
   }
 
@@ -62,6 +56,19 @@ Tool: {
       new_tool_box.attr("id", "tool_" + (this.t_id + 1)).appendTo("#tools_box");
       tools[this.t_id].init();
     }
+  }
+  p.more_info = function(){
+    $("#tool_" + this.t_id).hover(
+      function(e){
+        var more_info = $(this).children(".tool_more_info");
+        more_info.show();
+        // more_info.css({
+        //   "top":  e.originalEvent.layerX,
+        //   "left": e.originalEvent.layerY,
+        // });
+    },function(e){
+        $(this).children(".tool_more_info").hide();
+    });
   }
 
   p.set_info = function(update) {

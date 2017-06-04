@@ -73,5 +73,15 @@
   height: 50px;
   display: none;
 }
-
+.tool_more_info_btn {
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  vertical-align: middle;
+  right: 0;
+  top: 0;
+}
 
