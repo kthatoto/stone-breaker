@@ -31,3 +31,10 @@
 }
 #properties_box > p > span:nth-child(1) { left:  10px; }
 #properties_box > p > span:nth-child(2) { right: 10px; }
+
+#upgrades_box {
+  top: 150px;
+  right: 10px;
+  width: 320px;
+  height: 260px;
+}

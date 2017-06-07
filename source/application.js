@@ -58,16 +58,17 @@ Tool: {
     }
   }
   p.more_info = function(){
-    $("#tool_" + this.t_id).hover(
-      function(e){
-        var more_info = $(this).children(".tool_more_info");
+    $(".tool_more_info_btn").hover(function(e){
+        var more_info = $(this).parent().siblings(".tool_more_info");
         more_info.show();
         // more_info.css({
         //   "top":  e.originalEvent.layerX,
         //   "left": e.originalEvent.layerY,
         // });
-    },function(e){
-        $(this).children(".tool_more_info").hide();
+    });
+    $(".tool_more_info").hover(function(){
+    }, function(){
+      $(this).hide();
     });
   }
 
