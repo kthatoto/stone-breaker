@@ -3,21 +3,22 @@
 <head>
   <meta charset="utf-8">
   <title>Stone Clicker</title>
-  <link rel="stylesheet" href="./source/frame.css">
-  <link rel="stylesheet" href="./source/application.css">
-  <link rel="stylesheet" href="./source/tool.css">
-  <script src='./source/jquery-3.2.1.min.js'></script>
+  <link rel="stylesheet" href="./source/css/frame.css">
+  <link rel="stylesheet" href="./source/css/application.css">
+  <link rel="stylesheet" href="./source/css/tool.css">
+  <link rel="stylesheet" href="./source/css/upgrade.css">
+  <script src='./vendor/jquery-3.2.1.min.js'></script>
   <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
-  <script src="./source/application.js"></script>
-  <script src="./source/tool.js"></script>
-  <script src="./source/upgrade.js"></script>
+  <script src="./source/js/application.js"></script>
+  <script src="./source/js/tool.js"></script>
+  <script src="./source/js/upgrade.js"></script>
   <script>stone = 9800;</script>
 </head>
 <body>
   <div id="outer_frame">
     <div id="inner_frame" class="inner_frame">
 
-      <div id="center_stone" style="background-image: url(./source/stones/stone_1.png)"></div>
+      <div id="center_stone" style="background-image: url(./source/stone_images/stone_1.png)"></div>
 
       <div id="tools_box" class="box">
 
@@ -44,7 +45,6 @@
           <!-- <div class="tool_more_info"></div> -->
         </div>
 
-
       </div>
 
       <div id="properties_box" class="box">
@@ -62,7 +62,7 @@
         </p>
       </div>
 
-      <!-- <div id="upgrades_box" class="box">
+      <div id="upgrades_box" class="box">
         <div id="sale_upgrades_box" class="box">
           <p>sale upgrades</p>
           <div id="sale_upgrade_items" class="upgrade_items"></div>
@@ -71,7 +71,7 @@
           <p>purchased upgrades</p>
           <div id="purchased_upgrade_items" class="upgrade_items"></div>
         </div>
-      </div> -->
+      </div>
 
     </div>
   </div>
