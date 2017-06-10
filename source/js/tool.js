@@ -1,4 +1,14 @@
 
+function tools_init(){
+  tools = [
+    new Tool("hand punch",    10, 0.1, 1),
+    new Tool("hand punch2",  100,   1, 2),
+    new Tool("hand punch3",  300,   5, 3),
+    new Tool("hand punch4", 1000,  15, 4),
+  ];
+  tools[0].init();
+}
+
 Tool: {
   Tool = function(name, price, t_sps, t_id) {
     this.name    = name;
@@ -61,5 +71,18 @@ Tool: {
     this.price *= 1.15;
     stone = float_format(stone, 3);
     this.price = parseInt(this.price);
+    this.release_upgrade();
   };
+  p.release_upgrade = function() {
+    var releases = [10, 25, 50, 100];
+    if(0 <= releases.indexOf(this.count)) {
+      var release_u_id = 100*this.t_id + releases.indexOf(this.count)+1;
+      upgrades[release_u_id].init(release_u_id);
+    }
+  }
 }
+
+
+
+
+
