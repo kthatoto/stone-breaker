@@ -72,6 +72,10 @@ Tool: {
     stone = float_format(stone, 3);
     this.price = parseInt(this.price);
     this.release_upgrade();
+    achieve_check("tools_count", {
+      "t_id": this.t_id,
+      "count": this.count
+    });
   };
   p.release_upgrade = function() {
     var releases = [10, 25, 50, 100];

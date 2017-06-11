@@ -18,8 +18,8 @@ $(function(){
   $(".tool_more_info").hide();
 
   tools_init();
-
   upgrades_init();
+  achievement_init();
 });
 
 function update_sps(){
