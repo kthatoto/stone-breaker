@@ -71,19 +71,13 @@ Tool: {
     this.price *= 1.15;
     stone = float_format(stone, 3);
     this.price = parseInt(this.price);
-    this.release_upgrade();
-    achieve_check("tools_count", {
+
+    // 実績確認
+    achieve_check("tool_count", {
       "t_id": this.t_id,
       "count": this.count
     });
   };
-  p.release_upgrade = function() {
-    var releases = [10, 25, 50, 100];
-    if(0 <= releases.indexOf(this.count)) {
-      var release_u_id = 100*this.t_id + releases.indexOf(this.count)+1;
-      upgrades[release_u_id].init(release_u_id);
-    }
-  }
 }
 
 

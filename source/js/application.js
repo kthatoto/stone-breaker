@@ -1,14 +1,42 @@
+
+
 stone = 0;
-sps   = 0;
+sps   = 0; // stone per second
+
+click_info = {
+  "spc": 1,
+  "autoclick_count": 0,
+  "base_click_power": 1,
+  "multi_click_power": 1,
+  update_spc: function(){
+    this.spc = this.base_click_power * this.multi_click_power;
+  }
+};
+
+// 統計
+stats = {
+  "click_count": 0,
+  "click_gain": 0,
+};
+
 $(function(){
   // kongregateAPI.loadAPI(function(){
   //   window.kongregate = kongregateAPI.getAPI();
   // });
   $("#stone_number").text(stone);
+
+  // クリック
   $("#center_stone").on("click", function(){
-    stone++;
-    stone = float_format(stone, 3);
+    click_stone(1);
   });
+  // 自動クリック
+  setInterval(function(){
+    if(0 <click_info["autoclick_count"]) {
+      click_stone(click_info["autoclick_count"]);
+    }
+  }, 1000);
+
+  // 0.1秒ごとにstone取得
   setInterval(function(){
     stone += sps / 10;
     $("#stone_number").text(parseInt(stone));
@@ -21,6 +49,19 @@ $(function(){
   upgrades_init();
   achievement_init();
 });
+function click_stone(num) {
+  stone += click_info["spc"]*num;
+  stone = float_format(stone, 3);
+
+  stats["click_count"]+= num;
+  stats["click_gain"] += click_info["spc"]*num;
+  // 実績確認
+  achieve_check("click", {
+    "count": stats["click_count"],
+    "quant": stats["click_gain"]
+  });
+}
+
 
 function update_sps(){
   var new_sps = 0;
@@ -34,3 +75,19 @@ function float_format(number, n) {
   var pow = Math.pow(10 , n);
   return Math.round(number * pow) / pow;
 }
+
+function get_count_key(count, array) {
+  var key = -1;
+  $.each(array, function(i, a_count) {
+    if(a_count <= count){
+      key = i;
+    } else {
+      return false;
+    }
+  });
+  return key;
+}
+
+
+
+
