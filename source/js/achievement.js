@@ -45,6 +45,10 @@ function achieve_check(category, params) {
     case "tools_count":
       var count = params["count"];
       var achieve_counts = [10, 25, 50, 100];
+      if(0 <= achieve_counts.indexOf(count)) {
+        var a_id = 100*params["t_id"] + achieve_counts.indexOf(count) + 1;
+        achievements[a_id].gain();
+      }
       break;
   }
 }
