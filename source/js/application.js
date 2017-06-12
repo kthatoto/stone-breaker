@@ -13,6 +13,8 @@ click_info = {
   }
 };
 
+atk = 0;
+
 // 統計
 stats = {
   "click_count": 0,
@@ -40,7 +42,6 @@ $(function(){
   setInterval(function(){
     stone += sps / 10;
     $("#stone_number").text(parseInt(stone));
-    $("#sps_number").text(float_format(sps, 1));
   }, 100);
 
   $(".tool_more_info").hide();
@@ -63,12 +64,21 @@ function click_stone(num) {
 }
 
 
-function update_sps(){
+function update_sps() {
   var new_sps = 0;
   $.each(tools, function(){
     new_sps += (this.count * this.t_sps);
   });
   sps = new_sps;
+  $("#sps_number").text(float_format(sps, 1));
+}
+function update_atk() {
+  var new_atk = 0;
+  $.each(tools, function(){
+    new_atk += (this.count * this.t_atk);
+  });
+  atk = new_atk;
+  $("#atk_number").text(float_format(atk, 1));
 }
 
 function float_format(number, n) {

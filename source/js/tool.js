@@ -1,20 +1,21 @@
 
 function tools_init(){
   tools = [
-    new Tool("hand punch",    10, 0.1, 1),
-    new Tool("hand punch2",  100,   1, 2),
-    new Tool("hand punch3",  300,   5, 3),
-    new Tool("hand punch4", 1000,  15, 4),
+    new Tool("hand punch",    10, 0.1, 1,  1),
+    new Tool("hand punch2",  100,   1, 5,  2),
+    new Tool("hand punch3",  300,   5, 20, 3),
+    new Tool("hand punch4", 1000,  15, 50, 4),
   ];
   tools[0].init();
 }
 
 Tool: {
-  Tool = function(name, price, t_sps, t_id) {
+  Tool = function(name, price, t_sps, t_atk, t_id) {
     this.name    = name;
     this.price   = price;
     this.t_sps   = t_sps;
     this.count   = 0;
+    this.t_atk   = t_atk;
     this.t_id    = t_id;
   };
   var p = Tool.prototype;
@@ -71,6 +72,12 @@ Tool: {
     this.price *= 1.15;
     stone = float_format(stone, 3);
     this.price = parseInt(this.price);
+
+    // ATK加算
+    atk += this.t_atk;
+
+    update_sps();
+    update_atk();
 
     // 実績確認
     achieve_check("tool_count", {
