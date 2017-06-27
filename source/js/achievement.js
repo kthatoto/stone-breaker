@@ -6,10 +6,14 @@ function achievement_init() {
       new Achievement("1002", "click!!", achieve_click_count(15), null),
     ],
     "click_quantity": [
-      new Achievement("1101", "click!", achieve_click_count(20), null),
-      new Achievement("1102", "click!", achieve_click_count(25), null),
+      new Achievement("1101", "gain stone!", achieve_click_count(20), null),
+      new Achievement("1102", "gain stone!!", achieve_click_count(25), null),
     ],
     "tool0_count": [
+      new Achievement("001", "hand punch!", achieve_tool_count(0, 10), null),
+    ],
+    "tool1_count": [
+      new Achievement("101", "hand punch!!", achieve_tool_count(1, 10), null),
     ],
   };
   $.each(achievements, function(type, achs){
@@ -29,6 +33,12 @@ function achieve_click_count(line){
 function achieve_click_quantity(line){
   return function() {
     return line <= stats.click_quantity;
+  }
+}
+
+function achieve_tool_count(t_id, line) {
+  return function() {
+    return line <= tools[t_id].count;
   }
 }
 

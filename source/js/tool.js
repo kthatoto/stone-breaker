@@ -1,10 +1,10 @@
 
 function tools_init(){
   tools = [
-    new Tool("hand punch",    10, 0.1, 1,  1),
-    new Tool("hand punch2",  100,   1, 5,  2),
-    new Tool("hand punch3",  300,   5, 20, 3),
-    new Tool("hand punch4", 1000,  15, 50, 4),
+    new Tool("hand punch",    10, 0.1, 1,  0),
+    new Tool("hand punch2",  100,   1, 5,  1),
+    new Tool("hand punch3",  300,   5, 20, 2),
+    new Tool("hand punch4", 1000,  15, 50, 3),
   ];
   tools[0].init();
 }
@@ -34,11 +34,12 @@ Tool: {
   }
 
   p.next_tool = function(){
-    if(tools[this.t_id]) {
+    var new_t_id = this.t_id + 1;
+    if(tools[new_t_id]) {
       var new_tool_box = $("#tools_box > div:first-child").clone();
       new_tool_box.children(".tool_more_info").hide();
-      new_tool_box.attr("id", "tool_" + (this.t_id + 1)).appendTo("#tools_box");
-      tools[this.t_id].init();
+      new_tool_box.attr("id", "tool_" + (new_t_id)).appendTo("#tools_box");
+      tools[new_t_id].init();
     }
   }
   p.more_info = function(){
@@ -80,10 +81,7 @@ Tool: {
     update_atk();
 
     // 実績確認
-    achieve_check("tool_count", {
-      "t_id": this.t_id,
-      "count": this.count
-    });
+    achieve_check("tool"+this.t_id+"_count");
   };
 }
 
