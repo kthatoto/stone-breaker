@@ -57,10 +57,8 @@ function click_stone(num) {
   stats["click_count"]+= num;
   stats["click_gain"] += click_info["spc"]*num;
   // 実績確認
-  achieve_check("click", {
-    "count": stats["click_count"],
-    "quant": stats["click_gain"]
-  });
+  achieve_check("click_count");
+  achieve_check("click_quantity");
 }
 
 
