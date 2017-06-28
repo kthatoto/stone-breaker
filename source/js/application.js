@@ -46,6 +46,7 @@ $(function(){
 
   $(".tool_more_info").hide();
 
+  stones_init();
   tools_init();
   upgrades_init();
   achievement_init();
