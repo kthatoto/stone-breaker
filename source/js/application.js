@@ -38,10 +38,9 @@ $(function(){
     }
   }, 1000);
 
-  // 0.1秒ごとにstone取得
+  // 1フレーム
   setInterval(function(){
-    stone += sps / 10;
-    $("#stone_number").text(parseInt(stone));
+    frame();
   }, 100);
 
   $(".tool_more_info").hide();
