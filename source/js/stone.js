@@ -26,8 +26,12 @@ Stone: {
     });
   }
 
-  p.hp_update = function() {
-    
+  p.update = function() {
+
+    this.hp -= atk/10;
+    this.hp += this.recover/10;
+    if (this.max_hp < this.hp) { this.hp = this.max_hp }
+    $("#stone_hp_bar").css("width", float_format(this.hp / this.max_hp, 3)*100 + "%");
   }
 
 
